@@ -19,7 +19,9 @@ function isWithinLastTime(momentToCheck: moment.Moment) {
   const diffInMinutes = now.diff(momentToCheck, "minutes");
 
   // Check if the difference is less than or equal to QUERY_INTERVAL minutes
-  return diffInMinutes <= QUERY_INTERVAL;
+  const isValid = diffInMinutes <= QUERY_INTERVAL;
+
+  return isValid;
 }
 
 export default isWithinLastTime;

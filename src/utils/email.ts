@@ -65,9 +65,11 @@ const makeItemEmailText = (localTime: moment.Moment, item: IItem) => {
  */
 const makeTextEmailContent = (items: string) => {
   return `
-  thank you!\n\n
+  Below are the latest job postings matching your criteria:\n\n
 
-  ${items}
+  ${items}\n\n
+
+  Thank you!
   `;
 };
 
@@ -78,8 +80,9 @@ const makeTextEmailContent = (items: string) => {
  */
 const makeHTMLEmailContent = (items: string) => {
   return `
-  thank you !<br/>
+  <p>Below are the latest job postings matching your criteria:</p>
   <ul>${items}</ul>
+  <p>Thank you!</p>
   `;
 };
 

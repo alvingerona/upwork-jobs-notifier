@@ -53,7 +53,7 @@ const jobsNotifier = async () => {
     // send email
 
     sendEmail({
-      subject: "Foobar",
+      subject: "New Upwork Job Postings",
       html: makeHTMLEmailContent(
         itemsForNotify.map((item) => item.html).join("")
       ),
