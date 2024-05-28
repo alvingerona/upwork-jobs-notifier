@@ -18,6 +18,11 @@ This project is a serverless application that periodically checks the Upwork RSS
 - Sends email notifications for new job postings using SendGrid.
 - Scheduled to run every 30 minutes.
 
+## Requirements
+
+- An AWS account for deploying the serverless application.
+- A Serverless Framework account for managing and deploying your service.
+
 ## Installation
 
 1. Clone the repository:
@@ -60,6 +65,7 @@ serverless deploy
 ```
 
 ## To invoke the function locally for testing
+
 ```
 yarn invoke-jobs-notifier
 ```
