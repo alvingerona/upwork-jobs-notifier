@@ -13,8 +13,13 @@ plugins:
   - serverless-plugin-typescript
 
 functions:
-  jobsNotifierHandler:
-    handler: handler.jobsNotifierHandler
-    events:
-      # Invoke Lambda function every minute
-      - schedule: rate(30 minutes)
+  blankFunctionHandler:
+    handler: handler.blankFunctionHandler
+  #####
+  # Temporarily display notifier handler.
+  #####
+  # jobsNotifierHandler:
+  #   handler: handler.jobsNotifierHandler
+  #   events:
+  #     # Invoke Lambda function every minute
+  #     - schedule: rate(30 minutes)
