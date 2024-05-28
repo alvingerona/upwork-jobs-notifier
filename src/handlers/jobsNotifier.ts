@@ -12,6 +12,18 @@ import {
 import { UPWORK_FEED_URL } from "../utils/constants";
 import { IItem, TypeItemsForNotify, TypeRRSResponse } from "utils/types";
 
+/**
+ * Handler function for notifying about new job postings from the Upwork RSS feed.
+ *
+ * This function performs the following steps:
+ * 1. Fetches the RSS feed from Upwork.
+ * 2. Parses the RSS feed to extract job items.
+ * 3. Converts the publication date of each job item from UTC to local time.
+ * 4. Filters the job items to include only those published within a specified time frame.
+ * 5. Composes email content (both HTML and text) for the filtered job items.
+ * 6. Sends an email notification if there are any new job items to notify.
+ * 7. Logs the result of the notification attempt.
+ */
 const jobsNotifier = async () => {
   const rssParser = new RSSParser();
   const response = await axios.get(UPWORK_FEED_URL);

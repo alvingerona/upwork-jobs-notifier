@@ -3,6 +3,13 @@ import { EMAIL_FROM, EMAIL_SENDGRID_API_KEY, EMAIL_TO } from "./constants";
 import moment from "moment";
 import { IItem } from "./types";
 
+/**
+ * Sends an email using SendGrid.
+ * @param {Object} param0 - The email details.
+ * @param {string} param0.subject - The subject of the email.
+ * @param {string} param0.text - The plain text content of the email.
+ * @param {string} param0.html - The HTML content of the email.
+ */
 const sendEmail = async ({
   subject,
   text,
@@ -22,9 +29,15 @@ const sendEmail = async ({
     html,
   };
 
-  const response = await sg.send(msg);
+  await sg.send(msg);
 };
 
+/**
+ * Generates HTML content for a single job item.
+ * @param {moment.Moment} localTime - The local time of the job publication.
+ * @param {IItem} item - The job item.
+ * @returns {string} - The HTML content for the job item.
+ */
 const makeItemEmailHTML = (localTime: moment.Moment, item: IItem) => {
   const title = item.title.replace(" - Upwork", "");
   return `<li><a href="${item.link}" target="_blank">${title} | ${extractBudget(
@@ -32,6 +45,12 @@ const makeItemEmailHTML = (localTime: moment.Moment, item: IItem) => {
   )} | ${localTime.format("MMMM DD, YYYY hh:mmA")}</a></li>`;
 };
 
+/**
+ * Generates plain text content for a single job item.
+ * @param {moment.Moment} localTime - The local time of the job publication.
+ * @param {IItem} item - The job item.
+ * @returns {string} - The plain text content for the job item.
+ */
 const makeItemEmailText = (localTime: moment.Moment, item: IItem) => {
   const title = item.title.replace(" - Upwork", "");
   return `${title}[${item.link}] | ${extractBudget(
@@ -39,6 +58,11 @@ const makeItemEmailText = (localTime: moment.Moment, item: IItem) => {
   )} | ${localTime.format("MMMM DD, YYYY hh:mmA")}`;
 };
 
+/**
+ * Generates the plain text content for the email notification.
+ * @param {string} items - The plain text content of all job items.
+ * @returns {string} - The complete plain text email content.
+ */
 const makeTextEmailContent = (items: string) => {
   return `
   thank you!\n\n
@@ -47,6 +71,11 @@ const makeTextEmailContent = (items: string) => {
   `;
 };
 
+/**
+ * Generates the HTML content for the email notification.
+ * @param {string} items - The HTML content of all job items.
+ * @returns {string} - The complete HTML email content.
+ */
 const makeHTMLEmailContent = (items: string) => {
   return `
   thank you !<br/>
@@ -54,6 +83,11 @@ const makeHTMLEmailContent = (items: string) => {
   `;
 };
 
+/**
+ * Extracts the budget amount from the job description.
+ * @param {string} str - The job description string.
+ * @returns {string} - The extracted budget amount or "-" if not found.
+ */
 const extractBudget = (str: string) => {
   const budgetMatch = str.match(/Budget: \$([\d,]+)/);
 
