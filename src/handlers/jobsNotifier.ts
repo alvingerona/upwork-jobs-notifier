@@ -52,7 +52,7 @@ const jobsNotifier = async () => {
   if (itemsForNotify.length > 0) {
     // send email
 
-    sendEmail({
+    await sendEmail({
       subject: "New Upwork Job Postings",
       html: makeHTMLEmailContent(
         itemsForNotify.map((item) => item.html).join("")
