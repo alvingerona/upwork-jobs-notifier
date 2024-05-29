@@ -17,6 +17,8 @@ export const EMAIL_TO: string = process.env.EMAIL_TO ?? "";
 // This value is taken from the environment variables.
 export const EMAIL_FROM: string = process.env.EMAIL_FROM ?? "";
 
+export const EMAIL_FROM_NAME: string = process.env.EMAIL_FROM_NAME ?? "";
+
 // API key for SendGrid, used for sending emails.
 // This value is taken from the environment variables.
 export const EMAIL_SENDGRID_API_KEY: string =

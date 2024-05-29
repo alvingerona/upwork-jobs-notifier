@@ -1,5 +1,10 @@
 import sg from "@sendgrid/mail";
-import { EMAIL_FROM, EMAIL_SENDGRID_API_KEY, EMAIL_TO } from "./constants";
+import {
+  EMAIL_FROM,
+  EMAIL_FROM_NAME,
+  EMAIL_SENDGRID_API_KEY,
+  EMAIL_TO,
+} from "./constants";
 import moment from "moment";
 import { IItem } from "./types";
 
@@ -23,7 +28,10 @@ const sendEmail = async ({
 
   const msg = {
     to: EMAIL_TO,
-    from: EMAIL_FROM,
+    from: {
+      email: EMAIL_FROM,
+      name: EMAIL_FROM_NAME,
+    },
     subject,
     text,
     html,
