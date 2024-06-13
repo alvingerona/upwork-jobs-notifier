@@ -26,6 +26,9 @@ provider:
     EMAIL_FROM_NAME: ${env:EMAIL_FROM_NAME}
     EMAIL_SENDGRID_API_KEY: ${env:EMAIL_SENDGRID_API_KEY}
 
+package:
+  individually: true
+
 plugins:
   - serverless-plugin-typescript
   - serverless-dotenv-plugin
@@ -36,9 +39,11 @@ build:
 functions:
   jobsNotifierHandler:
     handler: handler.jobsNotifierHandler
+    package:
+      patterns:
+        - '!node_modules/**'
+        - 'src/functions/jobsNotifierHandler/**'
     events:
       - schedule: 
           # Invoke Lambda function every certain time
           rate: rate(30 minutes)
-          tags:
-            project: ${self:custom.projectTag}
