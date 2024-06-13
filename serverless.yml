@@ -5,16 +5,20 @@ app: upwork-job-notifier
 # "service" is the name of this project. This will also be added to your AWS resource names.
 service: upwork-job-notifier
 
+custom:
+  projectTag: upworkJobNotifier
+
 provider:
   name: aws
   runtime: nodejs20.x
   tags:
-    project: upworkJobNotifier
+    project: ${self:custom.projectTag}
 
+  # deploymentBucket: This line can be removed if you don't want to use a custom bucket and prefer to let Serverless create the bucket automatically.
   deploymentBucket:
     name: upworkjobnotifierbucket
     tags:
-      project: upworkJobNotifier
+      project: ${self:custom.projectTag}
 
   environment:
     EMAIL_TO: ${env:EMAIL_TO}
@@ -33,5 +37,8 @@ functions:
   jobsNotifierHandler:
     handler: handler.jobsNotifierHandler
     events:
-      # Invoke Lambda function every minute
-      - schedule: rate(30 minutes)
+      - schedule: 
+          # Invoke Lambda function every certain time
+          rate: rate(30 minutes)
+          tags:
+            project: ${self:custom.projectTag}
