@@ -20,6 +20,9 @@ plugins:
   - serverless-plugin-typescript
   - serverless-dotenv-plugin
 
+build:
+  esbuild: false
+
 functions:
   jobsNotifierHandler:
     handler: handler.jobsNotifierHandler
