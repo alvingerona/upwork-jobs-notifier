@@ -8,6 +8,8 @@ service: upwork-job-notifier
 provider:
   name: aws
   runtime: nodejs20.x
+  tags:
+    project: upworkJobNotifier
   environment:
     EMAIL_TO: ${env:EMAIL_TO}
     EMAIL_FROM: ${env:EMAIL_FROM}
