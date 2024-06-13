@@ -10,6 +10,12 @@ provider:
   runtime: nodejs20.x
   tags:
     project: upworkJobNotifier
+
+  deploymentBucket:
+    name: upworkjobnotifierbucket
+    tags:
+      project: upworkJobNotifier
+
   environment:
     EMAIL_TO: ${env:EMAIL_TO}
     EMAIL_FROM: ${env:EMAIL_FROM}
