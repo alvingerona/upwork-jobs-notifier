@@ -69,3 +69,9 @@ serverless deploy
 ```
 yarn invoke-jobs-notifier
 ```
+
+## How to test packager locally?
+Run command:
+```
+serveless package
+```
