@@ -4,12 +4,17 @@ This project is a serverless application that periodically checks the Upwork RSS
 
 ## Table of Contents
 
+- [Important Notes](#important-notes)
 - [Features](#features)
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [License](#license)
+
+## Important Notes
+
+- The `serverless-webpack` and `serverless-plugin-typescript` plugins have been removed because they are not needed in Serverless v4.
 
 ## Features
 
@@ -58,20 +63,22 @@ The configuration for the serverless application is specified in the `serverless
 
 ## Usage
 
-To deploy the application to AWS using the Serverless Framework, run:
+To deploy the application to AWS using the Serverless Framework, run the following command:
 
 ```bash
 serverless deploy
 ```
 
-## To invoke the function locally for testing
+## To invoke the function locally for testing, run the following command:
 
 ```
 yarn invoke-jobs-notifier
 ```
 
-## How to test packager locally?
-Run command:
+## How to test the packager locally?
+
+To test the packager locally, run the following command:
 ```
 serveless package
 ```
+
