@@ -8,7 +8,7 @@ service: upwork-job-notifier
 custom:
   projectTag: upworkJobNotifier
   webpack:
-    webpackConfig: '../webpack.config.js'
+    webpackConfig: './webpack.config.js'
     includeModules: true
 
 provider:
@@ -35,9 +35,7 @@ package:
     - node_modules/**
 
 plugins:
-  - serverless-plugin-typescript
   - serverless-dotenv-plugin
-  - serverless-webpack
 
 build:
   esbuild: false

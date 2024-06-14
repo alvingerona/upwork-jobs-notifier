@@ -10,7 +10,7 @@ import {
   sendEmail,
 } from "../utils/email";
 import { UPWORK_FEED_URL } from "../utils/constants";
-import { IItem, TypeItemsForNotify, TypeRRSResponse } from "utils/types";
+import { IItem, TypeItemsForNotify, TypeRRSResponse } from "../utils/types";
 
 /**
  * Handler function for notifying about new job postings from the Upwork RSS feed.

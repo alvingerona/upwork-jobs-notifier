@@ -1,18 +1,21 @@
 {
   "compilerOptions": {
+    "lib": ["es2017"],
+    "removeComments": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
     "target": "es2017",
-    "module": "commonjs",
-    "strict": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["src/*"]
-    }
+    "outDir": "lib",
+    "esModuleInterop": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", ".serverless", ".vscode", "dist"]
+  "include": ["./**/*.ts"],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*"
+  ]
 }
