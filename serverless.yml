@@ -7,9 +7,6 @@ service: upwork-job-notifier
 
 custom:
   projectTag: upworkJobNotifier
-  webpack:
-    webpackConfig: './webpack.config.js'
-    includeModules: true
 
 provider:
   name: aws
@@ -31,11 +28,15 @@ provider:
 
 package:
   individually: true
+  excludeDevDependencies: true
   exclude:
     - node_modules/**
+    - '**/*.map'
 
 plugins:
+  - serverless-plugin-typescript
   - serverless-dotenv-plugin
+  - serverless-plugin-include-dependencies
 
 build:
   esbuild: false
@@ -44,6 +45,6 @@ functions:
   jobsNotifierHandler:
     handler: handler.jobsNotifierHandler
     events:
-      - schedule: 
+      - schedule:
           # Invoke Lambda function every certain time
           rate: rate(30 minutes)
